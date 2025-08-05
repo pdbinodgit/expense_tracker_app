@@ -1,7 +1,10 @@
 package com.expense_tracker_app.expense_tracker_app.customresponse;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
-
+@Getter
+@Setter
 public class ApiResponse<T> {
 
     private HttpStatus status;

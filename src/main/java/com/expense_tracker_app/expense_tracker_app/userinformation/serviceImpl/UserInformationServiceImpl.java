@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -22,11 +23,11 @@ public class UserInformationServiceImpl implements UserInformationService {
 
     @Override
     public UserInformationDto saveUserInformation(UserInformationDto userInformationDto) {
-
         Optional<UserInformation> userInformationOptional=userInformationRepository.findByUsername(userInformationDto.getUsername());
         if (userInformationOptional.isPresent()){
-            throw  new TrackerException("Username already present", HttpStatus.BAD_REQUEST,400);
+            throw new TrackerException("Username already present", HttpStatus.BAD_REQUEST,400);
         }
+        userInformationDto.setCreatedAt(LocalDateTime.now());
         UserInformation user = userInformationRepository.save(userInformationMapper.dtoToEntity(userInformationDto));
         return userInformationMapper.entityToDto(user);
     }
