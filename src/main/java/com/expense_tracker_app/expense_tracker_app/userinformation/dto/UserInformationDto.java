@@ -1,7 +1,7 @@
 package com.expense_tracker_app.expense_tracker_app.userinformation.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,8 +23,10 @@ public class UserInformationDto {
     private String lastName;
 
     private Long age;
-    @NotBlank(message = "Date of birth is required.")
+
+    @NotNull(message = "Date of birth is required.")
     private LocalDate dateOfBirth;
+
     @NotBlank(message = "Username is required.")
     private String username;
 
