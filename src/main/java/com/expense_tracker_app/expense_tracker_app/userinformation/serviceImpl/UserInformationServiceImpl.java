@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,5 +31,14 @@ public class UserInformationServiceImpl implements UserInformationService {
         userInformationDto.setCreatedAt(LocalDateTime.now());
         UserInformation user = userInformationRepository.save(userInformationMapper.dtoToEntity(userInformationDto));
         return userInformationMapper.entityToDto(user);
+    }
+
+    @Override
+    public List<UserInformationDto> findAllUserInformation() {
+        List<UserInformation> userInformations=userInformationRepository.findAll();
+        List<UserInformationDto> dtos=userInformations.stream().
+                map(userInformation -> userInformationMapper.entityToDto(userInformation)).toList();
+
+        return dtos;
     }
 }

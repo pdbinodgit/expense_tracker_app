@@ -7,10 +7,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -22,5 +21,12 @@ public class UserInformationController {
     @PostMapping("/save")
     public ResponseEntity<ApiResponse<?>> saveuser(@RequestBody @Valid UserInformationDto dto){
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<>(HttpStatus.OK,"User information saved successfully",userInformationService.saveUserInformation(dto)));
+    }
+
+    @GetMapping("/findAllUserInformation")
+    public ResponseEntity<ApiResponse<?>> findAllUserInformation() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ApiResponse( HttpStatus.OK,"User information retrieve successfully",
+                        userInformationService.findAllUserInformation()));
     }
 }
