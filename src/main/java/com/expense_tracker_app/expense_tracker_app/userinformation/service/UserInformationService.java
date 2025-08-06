@@ -9,5 +9,4 @@ public interface UserInformationService {
     public UserInformationDto saveUserInformation(UserInformationDto userInformationDto);
 
     public List<UserInformationDto> findAllUserInformation();
-    public UserInformationDto findUserInformationById();
-}
+    public UserInformationDto findUserInformationById(long id);

@@ -42,5 +42,15 @@ public class UserInformationServiceImpl implements UserInformationService {
         return dtos;
     }
 
+    @Override
+    public UserInformationDto findUserInformationById(long id) {
+        Optional<UserInformation> userInformationOptional=userInformationRepository.findById(id);
+        if (!userInformationOptional.isPresent()){
+            throw new TrackerException("User not found",HttpStatus.BAD_REQUEST,400);
+        }
+
+        return userInformationMapper.entityToDto(userInformationOptional.get());
+    }
+
 
 }
