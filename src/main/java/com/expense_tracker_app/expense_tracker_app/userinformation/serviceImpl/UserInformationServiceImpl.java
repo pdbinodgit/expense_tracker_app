@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,8 +28,29 @@ public class UserInformationServiceImpl implements UserInformationService {
         if (userInformationOptional.isPresent()){
             throw new TrackerException("Username already present", HttpStatus.BAD_REQUEST,400);
         }
+
         userInformationDto.setCreatedAt(LocalDateTime.now());
         UserInformation user = userInformationRepository.save(userInformationMapper.dtoToEntity(userInformationDto));
         return userInformationMapper.entityToDto(user);
     }
+
+    @Override
+    public List<UserInformationDto> findAllUserInformation() {
+        List<UserInformation> userInformations=userInformationRepository.findAll();
+        List<UserInformationDto> dtos=userInformations.stream().
+                map(userInformation -> userInformationMapper.entityToDto(userInformation)).toList();
+        return dtos;
+    }
+
+    @Override
+    public UserInformationDto findUserInformationById(long id) {
+        Optional<UserInformation> userInformationOptional=userInformationRepository.findById(id);
+        if (!userInformationOptional.isPresent()){
+            throw new TrackerException("User not found",HttpStatus.BAD_REQUEST,400);
+        }
+
+        return userInformationMapper.entityToDto(userInformationOptional.get());
+    }
+
+
 }
