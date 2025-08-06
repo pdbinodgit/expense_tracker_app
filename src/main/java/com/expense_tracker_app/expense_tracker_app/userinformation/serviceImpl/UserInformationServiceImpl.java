@@ -28,6 +28,7 @@ public class UserInformationServiceImpl implements UserInformationService {
         if (userInformationOptional.isPresent()){
             throw new TrackerException("Username already present", HttpStatus.BAD_REQUEST,400);
         }
+
         userInformationDto.setCreatedAt(LocalDateTime.now());
         UserInformation user = userInformationRepository.save(userInformationMapper.dtoToEntity(userInformationDto));
         return userInformationMapper.entityToDto(user);
@@ -38,7 +39,8 @@ public class UserInformationServiceImpl implements UserInformationService {
         List<UserInformation> userInformations=userInformationRepository.findAll();
         List<UserInformationDto> dtos=userInformations.stream().
                 map(userInformation -> userInformationMapper.entityToDto(userInformation)).toList();
-
         return dtos;
     }
+
+
 }
