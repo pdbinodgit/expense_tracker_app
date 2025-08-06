@@ -29,4 +29,11 @@ public class UserInformationController {
                 .body(new ApiResponse( HttpStatus.OK,"User information retrieve successfully",
                         userInformationService.findAllUserInformation()));
     }
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<ApiResponse<?>> findUserInformationById(@PathVariable long id){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ApiResponse( HttpStatus.OK,"User information retrieve successfully",
+                        userInformationService.findUserInformationById(id)));
+    }
 }
