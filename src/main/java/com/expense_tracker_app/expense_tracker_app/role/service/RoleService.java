@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface RoleService {
     public RoleDto save(RoleDto roleDto);
-    public List<RoleDto> findAllRole(RoleDto roleDto);
+    public List<RoleDto> findAllRole();
 }
