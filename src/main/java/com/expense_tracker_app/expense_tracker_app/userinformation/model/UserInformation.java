@@ -33,8 +33,7 @@ public class UserInformation {
 
     private String createdBy;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_has_role",
     joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")

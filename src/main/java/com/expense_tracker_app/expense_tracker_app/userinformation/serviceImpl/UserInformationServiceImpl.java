@@ -2,6 +2,7 @@ package com.expense_tracker_app.expense_tracker_app.userinformation.serviceImpl;
 
 import com.expense_tracker_app.expense_tracker_app.customexception.TrackerException;
 import com.expense_tracker_app.expense_tracker_app.mapper.UserInformationMapper;
+import com.expense_tracker_app.expense_tracker_app.role.model.Role;
 import com.expense_tracker_app.expense_tracker_app.userinformation.dto.UserInformationDto;
 import com.expense_tracker_app.expense_tracker_app.userinformation.model.UserInformation;
 import com.expense_tracker_app.expense_tracker_app.userinformation.repository.UserInformationRepository;
@@ -28,8 +29,10 @@ public class UserInformationServiceImpl implements UserInformationService {
         if (userInformationOptional.isPresent()){
             throw new TrackerException("Username already present", HttpStatus.BAD_REQUEST,400);
         }
-
         userInformationDto.setCreatedAt(LocalDateTime.now());
+        UserInformation userInformation=userInformationMapper.dtoToEntity(userInformationDto);
+
+
         UserInformation user = userInformationRepository.save(userInformationMapper.dtoToEntity(userInformationDto));
         return userInformationMapper.entityToDto(user);
     }
