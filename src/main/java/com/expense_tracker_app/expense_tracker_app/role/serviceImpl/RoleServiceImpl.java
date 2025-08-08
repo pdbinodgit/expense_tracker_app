@@ -23,7 +23,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public RoleDto save(RoleDto roleDto) {
         Optional<Role> optionalRole=roleRepository.findByRoleName(roleDto.getRoleName());
-        if (!optionalRole.isPresent()){
+        if (optionalRole.isPresent()){
             throw  new TrackerException("Role name already present.", HttpStatus.BAD_REQUEST,400);
         }
         Role role=roleRepository.save(roleMapper.dtoToEntity(roleDto));
