@@ -1,10 +1,12 @@
 package com.expense_tracker_app.expense_tracker_app.userinformation.model;
 
+import com.expense_tracker_app.expense_tracker_app.role.model.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
@@ -30,5 +32,13 @@ public class UserInformation {
     private LocalDateTime createdAt;
 
     private String createdBy;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+
+    @JoinTable(name = "user_has_role",
+    joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
 
 }
