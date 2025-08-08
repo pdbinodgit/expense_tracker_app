@@ -1,5 +1,7 @@
 package com.expense_tracker_app.expense_tracker_app.userinformation.dto;
 
+import com.expense_tracker_app.expense_tracker_app.role.dto.RoleDto;
+import com.expense_tracker_app.expense_tracker_app.role.model.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -7,6 +9,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -36,4 +39,6 @@ public class UserInformationDto {
     private LocalDateTime createdAt;
 
     private String createdBy;
+
+    private Set<RoleDto> rolesDto;
 }
