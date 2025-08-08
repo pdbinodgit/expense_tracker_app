@@ -1,10 +1,8 @@
 package com.expense_tracker_app.expense_tracker_app.role.model;
 
 import com.expense_tracker_app.expense_tracker_app.role.roleenum.RoleEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
