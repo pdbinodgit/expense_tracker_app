@@ -9,6 +9,7 @@ import com.expense_tracker_app.expense_tracker_app.userinformation.repository.Us
 import com.expense_tracker_app.expense_tracker_app.userinformation.service.UserInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,6 +24,9 @@ public class UserInformationServiceImpl implements UserInformationService {
     @Autowired
     UserInformationMapper userInformationMapper;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     public UserInformationDto saveUserInformation(UserInformationDto userInformationDto) {
         Optional<UserInformation> userInformationOptional=userInformationRepository.findByUsername(userInformationDto.getUsername());
@@ -31,6 +35,7 @@ public class UserInformationServiceImpl implements UserInformationService {
         }
         userInformationDto.setCreatedAt(LocalDateTime.now());
         UserInformation userInformation=userInformationMapper.dtoToEntity(userInformationDto);
+        userInformation.setPassword(passwordEncoder.encode(userInformation.getPassword()));
 
 
         UserInformation user = userInformationRepository.save(userInformationMapper.dtoToEntity(userInformationDto));
