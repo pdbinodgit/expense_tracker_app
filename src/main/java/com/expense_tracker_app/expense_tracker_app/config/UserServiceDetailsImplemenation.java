@@ -2,14 +2,14 @@ package com.expense_tracker_app.expense_tracker_app.config;
 
 import com.expense_tracker_app.expense_tracker_app.userinformation.model.UserInformation;
 import com.expense_tracker_app.expense_tracker_app.userinformation.repository.UserInformationRepository;
-import com.expense_tracker_app.expense_tracker_app.userinformation.service.UserInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
+@Service
 public class UserServiceDetailsImplemenation implements UserDetailsService {
     /**
      * Locates the user based on the username. In the actual implementation, the search
