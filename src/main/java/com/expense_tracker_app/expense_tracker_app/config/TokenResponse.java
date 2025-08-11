@@ -9,4 +9,9 @@ public class TokenResponse {
 
     public String token;
     public String username;
+
+    public TokenResponse(String token, String username) {
+        this.token = token;
+        this.username = username;
+    }
 }
