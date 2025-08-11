@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Optional;
 
-public class UserServiceDetailsImplementaion implements UserDetailsService {
+public class UserServiceDetailsImplemenation implements UserDetailsService {
     /**
      * Locates the user based on the username. In the actual implementation, the search
      * may possibly be case sensitive, or case insensitive depending on how the
