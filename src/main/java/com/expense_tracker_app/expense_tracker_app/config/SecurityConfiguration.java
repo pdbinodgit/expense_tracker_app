@@ -31,6 +31,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth->
                         auth.requestMatchers("/user/save")
                                 .permitAll()
+                                .requestMatchers("/role/save")
+                                .permitAll()
                                 .anyRequest()
                                 .authenticated()
                 ).build();
