@@ -38,7 +38,7 @@ public class UserInformationServiceImpl implements UserInformationService {
         userInformation.setPassword(passwordEncoder.encode(userInformation.getPassword()));
 
 
-        UserInformation user = userInformationRepository.save(userInformationMapper.dtoToEntity(userInformationDto));
+        UserInformation user = userInformationRepository.save(userInformation);
         return userInformationMapper.entityToDto(user);
     }
 
