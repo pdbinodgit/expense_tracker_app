@@ -33,6 +33,8 @@ public class SecurityConfiguration {
                                 .permitAll()
                                 .requestMatchers("/role/save")
                                 .permitAll()
+                                .requestMatchers("/url/signIn")
+                                .permitAll()
                                 .anyRequest()
                                 .authenticated()
                 ).build();
