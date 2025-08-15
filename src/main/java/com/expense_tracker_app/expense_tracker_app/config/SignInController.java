@@ -31,6 +31,5 @@ public class SignInController {
 
             return ResponseEntity.status(HttpStatus.OK)
                     .body(new ApiResponse<>(HttpStatus.OK,"Token generate successfully",new TokenResponse(token, authentication.getName())));
-
     }
 }
