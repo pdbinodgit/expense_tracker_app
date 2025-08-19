@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -19,4 +20,8 @@ public class Income {
     private BigDecimal amount;
 
     private String remark;
+
+    private LocalDateTime createdAt;
+
+    private String createdBy;
 }
