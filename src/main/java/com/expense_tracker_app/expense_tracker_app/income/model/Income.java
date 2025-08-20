@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,6 +23,8 @@ public class Income {
     private String remark;
 
     private LocalDateTime createdAt;
+
+    private LocalDate transactionDate;
 
     private String createdBy;
 }
